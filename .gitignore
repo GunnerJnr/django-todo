@@ -73,10 +73,10 @@ fabric.properties
 *.tar.gz
 *.suo
 *.ncb
-*.idb 
-*.obj 
-*.opt 
-*.pch 
+*.idb
+*.obj
+*.opt
+*.pch
 *.jsh
 *.jsall
 *.pyc
@@ -109,7 +109,6 @@ fabric.properties
 /src/third_party/*/*.tlog
 /src/third_party/*/*.lastbuildstate
 config.log
-settings.py
 log_config.py
 /tags
 TAGS
