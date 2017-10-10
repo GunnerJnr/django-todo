@@ -22,7 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'e5w7)tnyrw&&yx-psejsnx5r15b+pp6txzy)n4$_pri=szy52m'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'dg-django-todo.herokuapp.com']
+# DEBUG = True
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'dg-django-todo.herokuapp.com']
 
 # Application definition
 
@@ -34,9 +36,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_docs',
+    'corsheaders',
     'todo',
     'accounts',
 ]
+
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
@@ -62,7 +69,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8080',
+    'http://127.0.0.1:8080',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+)
 
 ROOT_URLCONF = 'django_todo.urls'
 
